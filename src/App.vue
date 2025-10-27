@@ -8,7 +8,7 @@ import type {QueryLanguageId} from 'vue3-ts-jsoneditor'
 
 const jsonData = ref();
 
-const queryLanguages = ref<QueryLanguageId[]>(['javascript', 'lodash', 'jmespath']);
+const queryLanguages = ref<QueryLanguageId[]>(['javascript', 'lodash', 'jmespath', 'jsonquery', 'jsonpath']);
 
 const onError = (error: any) => {
   //
@@ -74,7 +74,6 @@ const handleRenderMenu = (items: any[], mode: any) => {
       :full-width-button="false"
   />
 </template>
-
 <style scoped>
 .awesome-json-editor {
   /* define a custom theme color */
