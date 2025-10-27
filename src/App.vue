@@ -7,6 +7,7 @@ import JsonEditor from 'vue3-ts-jsoneditor';
 import type {QueryLanguageId} from 'vue3-ts-jsoneditor'
 
 const jsonData = ref();
+const selectionData = ref();
 
 const queryLanguages = ref<QueryLanguageId[]>(['javascript', 'lodash', 'jmespath', 'jsonquery', 'jsonpath']);
 
@@ -24,7 +25,7 @@ const onBlur = () => {
 }
 const handleCopy = () => {
   console.log('Custom copy button clicked')
-  const contents = JSON.stringify(jsonData.value, null, 2)
+  const contents = JSON.stringify(selectionData.value, null, 2)
   console.log('contents:', contents)
   copyToClipboard(contents)
 }
@@ -74,6 +75,7 @@ const handleRenderMenu = (items: any[], mode: any) => {
       mode="text"
       :queryLanguagesIds="queryLanguages"
       v-model:json="jsonData"
+      v-model:selection="selectionData"
       @error="onError"
       @focus="onFocus"
       @blur="onBlur"
