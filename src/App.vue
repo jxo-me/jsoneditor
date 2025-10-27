@@ -32,7 +32,15 @@ const handleCopy = () => {
 const handleTrash = () => {
   console.log('Custom trash button clicked')
   console.log('value:', jsonData.value)
-  // jsonData.value = {}
+  jsonData.value = {}
+}
+const handleChange = (content: Content, previousContent: Content, patchResult: JSONPatchResult | null) => {
+  console.log('content:', content)
+  console.log('previousContent:', previousContent)
+  console.log('patchResult:', patchResult)
+  const contents = JSON.stringify(jsonData.value, null, 2)
+  console.log('contents:', contents)
+  jsonData.value = contents
 }
 
 const handleRenderMenu = (items: any[], mode: any) => {
@@ -69,6 +77,7 @@ const handleRenderMenu = (items: any[], mode: any) => {
       @error="onError"
       @focus="onFocus"
       @blur="onBlur"
+      @change="handleChange"
       class="awesome-json-editor vue-ts-json-editor--max-box"
       :on-render-menu="handleRenderMenu"
       :full-width-button="false"
