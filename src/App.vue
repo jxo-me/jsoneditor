@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import { ref } from "vue";
 import { faCopy, faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import copyToClipboard from './utils/copyToClipboard'
 
+import JsonEditor from 'vue3-ts-jsoneditor';
 import type {QueryLanguageId} from 'vue3-ts-jsoneditor'
 
-const jsonData = ref('');
+const jsonData = ref();
 
 const queryLanguages = ref<QueryLanguageId[]>(['javascript', 'lodash', 'jmespath']);
 
 const onError = (error: any) => {
   //
+  console.log(error);
 }
 
 const onFocus = () => {
@@ -69,6 +71,7 @@ const handleRenderMenu = (items: any[], mode: any) => {
       @blur="onBlur"
       class="awesome-json-editor vue-ts-json-editor--max-box"
       :on-render-menu="handleRenderMenu"
+      :full-width-button="false"
   />
 </template>
 
